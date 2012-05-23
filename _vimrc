@@ -37,7 +37,6 @@ set clipboard+=unnamed
 let g:vimfiler_as_default_explorer=1
 let g:vimfiler_safe_mode_by_default=0
 
-let g:googlereader_email = "horiesantoko@gmail.com"
 
 vnoremap < <gv
 vnoremap > >gv
@@ -53,13 +52,9 @@ map <Leader>t 0itodo <Esc>
 
 "Cygwin‚ð PATH‚É’Ç‰Á
 let $PATH = $PATH.';c:\cygwin\bin\'"PATH‚É’Ç‰Á
-let $HTTP_PROXY = 'http://proxy.nttdata-hokkaido.co.jp:8080/'
-let $HTTPS_PROXY = 'https://proxy.nttdata-hokkaido.co.jp:8080/'
 let $CYGWIN = 'nodosfilewarning'
 
 let twitvim_enable_perl = 1
-let twitvim_proxy = "proxy.nttdata-hokkaido.co.jp:8080"
-let twitvim_browser_cmd = 'c:\Users\horie\AppData\Local\Google\Chrome\Application\chrome.exe' 
 
 call delete(expand('~/scratchpad.txt'))
 call writefile([""], expand("~/scratchpad.txt"), "b")
