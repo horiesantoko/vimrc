@@ -1,0 +1,26 @@
+" vim:set ts=8 sts=2 sw=2 tw=0: (この行に関しては:help modelineを参照)
+"---------------------------------------------------------------------------
+" カラー設定:
+colorscheme molokai
+"---------------------------------------------------------------------------
+" フォント設定:
+"
+  set guifont=MeiryoKe_Gothic:h9:cSHIFTJIS
+
+  " 行間隔の設定
+  set linespace=1
+  " 一部のUCS文字の幅を自動計測して決める
+  if has('kaoriya')
+    set ambiwidth=auto
+  endif
+
+" ウインドウの幅
+set columns=120
+" ウインドウの高さ
+set lines=30
+
+hi CursorIM guibg=purple guifg=NONE
+set go-=T
+gui
+set transparency=205
+" Copyright (C) 2011 KaoriYa/MURAOKA Taro
