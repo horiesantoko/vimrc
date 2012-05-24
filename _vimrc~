@@ -64,6 +64,3 @@ call writefile([""], expand("~/scratchpad.txt"), "b")
 
 
 call Pl#Theme#InsertSegment('charcode', 'after', 'filetype')
-
-
-let g:neocomplcache_enable_at_startup = 1
