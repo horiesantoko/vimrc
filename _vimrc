@@ -270,8 +270,8 @@ map <Leader>t 0itodo <Esc>
 "Git(github for windows)‚ğ PATH‚É’Ç‰Á
 let $PATH = $PATH.';'.(expand('~\AppData\Local\GitHub\PortableGit_410d4c9397bbdbf295ae33a7fa27ec568849e539\bin')) "PATH‚É’Ç‰Á
 
-"Cygwinã‚’ PATHã«è¿½åŠ 
-"let $PATH = $PATH.';c:\cygwin\bin\'"PATHã«è¿½åŠ 
+"Cygwin‚ğPATH‚É’Ç‰Á
+"let $PATH = $PATH.';c:\cygwin\bin\'
 "let $CYGWIN = 'nodosfilewarning'
 
 au BufNewFile,BufRead \[tweetvim\] :set wrap
