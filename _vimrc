@@ -288,7 +288,6 @@ let g:neocomplcache_enable_at_startup = 1
 let g:quickrun_config = {}
 let g:quickrun_config.javascript = {'command' : 'node'}
 
-map <F4> 
 let g:Powerline_mode_i = '‘}“ü'
 let g:Powerline_mode_R = '’uŠ·'
 let g:Powerline_mode_n = '’Êí'
