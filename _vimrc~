@@ -1,6 +1,6 @@
 " An example for a vimrc file.
 "
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
+" Maintainer:  Bram Moolenaar <Bram@vim.org>
 " Last change:	2008 Dec 17
 "
 " To use it, copy it to
@@ -107,6 +107,7 @@ if 1 && !filereadable($VIMRUNTIME . '/menu.vim') && has('gui_running')
 endif
 
 "---------------------------------------------------------------------------
+<<<<<<< HEAD
 " åüçıÇÃãììÆÇ…ä÷Ç∑ÇÈê›íË:
 "
 " åüçıéûÇ…ëÂï∂éöè¨ï∂éöÇñ≥éã (noignorecase:ñ≥éãÇµÇ»Ç¢)
@@ -237,6 +238,7 @@ NeoBundle 'https://github.com/mattn/webapi-vim'
 NeoBundle 'https://github.com/mattn/togetter-vim'
 NeoBundle 'https://github.com/koron/minimap-vim'
 NeoBundle 'https://github.com/jceb/vim-orgmode'
+NeoBundle 'https://github.com/fuenor/qfixhowm'
 
 " vim-scripts repos
 "Bundle 'rails.vim'
@@ -269,8 +271,8 @@ map <Leader>t 0itodo <Esc>
 "Git(github for windows)Ç PATHÇ…í«â¡
 let $PATH = $PATH.';'.(expand('~\AppData\Local\GitHub\PortableGit_410d4c9397bbdbf295ae33a7fa27ec568849e539\bin')) "PATHÇ…í«â¡
 
-"CygwinÇ PATHÇ…í«â¡
-"let $PATH = $PATH.';c:\cygwin\bin\'"PATHÇ…í«â¡
+"Cygwin„Çí PATH„Å´ËøΩÂä†
+"let $PATH = $PATH.';c:\cygwin\bin\'"PATH„Å´ËøΩÂä†
 "let $CYGWIN = 'nodosfilewarning'
 
 au BufNewFile,BufRead \[tweetvim\] :set wrap
