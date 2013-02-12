@@ -2,10 +2,14 @@
 "---------------------------------------------------------------------------
 " カラー設定:
 colorscheme molokai
+"colorscheme mayansmoke
+
 "---------------------------------------------------------------------------
 " フォント設定:
 "
   set guifont=MeiryoKe_Gothic:h9:cSHIFTJIS
+"  set guifont=consolas:h9
+"  set guifontwide=MeiryoKe_Gothic:h9:cSHIFTJIS
 
   " 行間隔の設定
   set linespace=1
@@ -21,6 +25,11 @@ set lines=30
 
 hi CursorIM guibg=purple guifg=NONE
 set go-=T
-gui
-set transparency=205
+if has('KaoriYa')
+  autocmd guienter * set transparency=230
+else
+  if executable("vimtweak.dll")
+    autocmd guienter * call libcallnr("vimtweak","SetAlpha",221)
+endif
+endif
 " Copyright (C) 2011 KaoriYa/MURAOKA Taro
