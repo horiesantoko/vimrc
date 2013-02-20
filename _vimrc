@@ -238,6 +238,7 @@ NeoBundle 'https://github.com/mattn/togetter-vim'
 NeoBundle 'https://github.com/koron/minimap-vim'
 NeoBundle 'https://github.com/jceb/vim-orgmode'
 NeoBundle 'https://github.com/fuenor/qfixhowm'
+NeoBundle 'https://github.com/vim-scripts/HybridText'
 
 " vim-scripts repos
 "Bundle 'rails.vim'
