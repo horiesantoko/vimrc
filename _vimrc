@@ -14,9 +14,50 @@ if v:progname =~? "evim"
   finish
 endif
 
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
 set nocompatible
+filetype off                   " (1)
+"
+if has('vim_starting')
+set rtp+=~/.vim/neobundle/neobundle.vim/    " (2)
+call neobundle#rc()               " (3)
+endif
+"
+NeoBundle 'https://github.com/Shougo/vimproc'
+NeoBundle 'https://github.com/Shougo/neocomplcache'
+NeoBundle 'https://github.com/Shougo/unite.vim'
+NeoBundle 'https://github.com/Shougo/vimfiler'
+NeoBundle 'https://github.com/tomasr/molokai'
+NeoBundle 'https://github.com/Shougo/vimshell'
+NeoBundle 'https://github.com/thinca/vim-quickrun'
+NeoBundle 'https://github.com/vim-jp/vital.vim'
+NeoBundle 'https://github.com/vim-jp/vimdoc-ja'
+NeoBundle 'https://github.com/vim-scripts/GoogleReader.vim'
+NeoBundle 'https://github.com/Lokaltog/vim-powerline'
+NeoBundle 'https://github.com/mattn/calendar-vim'
+NeoBundle 'https://github.com/vim-scripts/mayansmoke'
+NeoBundle 'https://github.com/nanotech/jellybeans.vim'
+NeoBundle 'https://github.com/basyura/TweetVim'
+NeoBundle 'https://github.com/basyura/twibill.vim'
+NeoBundle 'https://github.com/tyru/open-browser.vim'
+NeoBundle 'https://github.com/mattn/webapi-vim'
+NeoBundle 'https://github.com/mattn/togetter-vim'
+NeoBundle 'https://github.com/koron/minimap-vim'
+NeoBundle 'https://github.com/jceb/vim-orgmode'
+NeoBundle 'https://github.com/vim-scripts/HybridText'
+NeoBundle 'https://github.com/w0ng/vim-hybrid'
+NeoBundle 'https://github.com/koron/chalice'
+NeoBundle 'https://github.com/thinca/vim-unite-history'
+NeoBundle 'https://github.com/mileszs/ack.vim'
+NeoBundle 'https://github.com/yuratomo/gmail.vim'
+
+
+" vim-scripts repos
+"Bundle 'rails.vim'
+"
+" non github repos
+"Bundle 'git://git.wincent.com/command-t.git'
+"
+filetype plugin indent on     " (5)
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -27,7 +68,6 @@ else
   set backup		" keep a backup file
 endif
 set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
@@ -144,7 +184,7 @@ set list
 " どの文字でタブや改行を表示するかを設定
 set listchars=tab:>-,extends:<,trail:-,eol:<
 " 長い行を折り返して表示 (nowrap:折り返さない)
-set wrap
+set nowrap
 " 常にステータス行を表示 (詳細は:he laststatus)
 set laststatus=2
 " コマンドラインの高さ (Windows用gvim使用時はgvimrcを編集すること)
@@ -155,6 +195,10 @@ set showcmd
 set title
 " 画面を黒地に白にする (次行の先頭の " を削除すれば有効になる)
 "colorscheme evening " (Windows用gvim使用時はgvimrcを編集すること)
+
+set number
+"set clipboard+=unnamed
+"set clipboard+=unnamedplus
 
 "---------------------------------------------------------------------------
 " ファイル操作に関する設定:
@@ -208,53 +252,8 @@ if has('mac')
 endif
 
 
-set nocompatible
-filetype off                   " (1)
-"
-if has('vim_starting')
-set rtp+=~/.vim/neobundle/neobundle.vim/    " (2)
-call neobundle#rc()               " (3)
-endif
-"
-NeoBundle 'https://github.com/Shougo/vimproc'
-NeoBundle 'https://github.com/Shougo/neocomplcache'
-NeoBundle 'https://github.com/Shougo/unite.vim'
-NeoBundle 'https://github.com/Shougo/vimfiler'
-NeoBundle 'https://github.com/tomasr/molokai'
-NeoBundle 'https://github.com/Shougo/vimshell'
-NeoBundle 'https://github.com/thinca/vim-quickrun'
-NeoBundle 'https://github.com/vim-jp/vital.vim'
-NeoBundle 'https://github.com/vim-jp/vimdoc-ja'
-NeoBundle 'https://github.com/vim-scripts/GoogleReader.vim'
-NeoBundle 'https://github.com/Lokaltog/vim-powerline'
-NeoBundle 'https://github.com/mattn/calendar-vim'
-NeoBundle 'https://github.com/vim-scripts/mayansmoke'
-NeoBundle 'https://github.com/nanotech/jellybeans.vim'
-NeoBundle 'https://github.com/basyura/TweetVim'
-NeoBundle 'https://github.com/basyura/twibill.vim'
-NeoBundle 'https://github.com/tyru/open-browser.vim'
-NeoBundle 'https://github.com/mattn/webapi-vim'
-NeoBundle 'https://github.com/mattn/togetter-vim'
-NeoBundle 'https://github.com/koron/minimap-vim'
-NeoBundle 'https://github.com/jceb/vim-orgmode'
-NeoBundle 'https://github.com/fuenor/qfixhowm'
-NeoBundle 'https://github.com/vim-scripts/HybridText'
-
-" vim-scripts repos
-"Bundle 'rails.vim'
-"
-" non github repos
-"Bundle 'git://git.wincent.com/command-t.git'
-"
-filetype plugin indent on     " (5)
-
-set nowrap
-set number
-set clipboard+=unnamed
-
 let g:vimfiler_as_default_explorer=1
 let g:vimfiler_safe_mode_by_default=0
-
 
 vnoremap < <gv
 vnoremap > >gv
@@ -262,25 +261,33 @@ au FocusLost *memo* :w
 au FocusLost *todo* :w
 
 let g:unite_enable_start_insert=1
-map <Leader>u :execute "Unite buffer file_mru directory_mru line file:" . substitute( expand("%:p:h"),"\\","/","g")<CR>
+let g:unite_source_history_yank_enable =1
+let g:unite_source_file_mru_filename_format = ''
+map <Leader>u :Unite buffer file_mru command mapping history/command<CR>
+map <Leader><Leader>  <Leader>u
 map <Leader>f :execute "VimFiler " . substitute( expand("%:p:h"),"\\","/","g")<CR>
-
+map <Leader>c :execute "cd ". expand("%:p:h")<CR>
 map <Leader>d 0idone <Esc>
 map <Leader>t 0itodo <Esc>
-
-"Git(github for windows)を PATHに追加
-let $PATH = $PATH.';'.(expand('~\AppData\Local\GitHub\PortableGit_410d4c9397bbdbf295ae33a7fa27ec568849e539\bin')) "PATHに追加
+" For ack.
+"if executable('ack')
+"  set grepprg=ack\ --no-heading\ --no-color\ -a
+"  let g:unite_source_grep_command = 'ack'
+"  let g:unite_source_grep_default_opts = '--no-heading --no-color -a'
+"  let g:unite_source_grep_recursive_opt = ''
+"endif
 
 "CygwinをPATHに追加
 "let $PATH = $PATH.';c:\cygwin\bin\'
 "let $CYGWIN = 'nodosfilewarning'
 
+"Git(github for windows)を PATHに追加
+let $PATH = $PATH.';'.(expand('~\AppData\Local\GitHub\PortableGit_410d4c9397bbdbf295ae33a7fa27ec568849e539\bin')) "PATHに追加
+
+"set grepprg=c:/cygwin/bin/grep.exe\ -nH
+
 au BufNewFile,BufRead \[tweetvim\] :set wrap
 let g:tweetvim_tweet_per_page = 100
-
-call delete(expand('~/scratchpad.txt'))
-call writefile([""], expand("~/scratchpad.txt"), "b")
-
 
 call Pl#Theme#InsertSegment('charcode', 'after', 'filetype')
 
@@ -298,3 +305,11 @@ let g:Powerline_mode_cv = '矩形ビジュアル'
 let g:Powerline_mode_s = '選択'
 let g:Powerline_mode_S = '行選択'
 let g:Powerline_mode_cs = '矩形選択'
+
+" chalice
+let g:chalice_basedir = expand('~/.vim/chalice')
+let g:chalice_cachedir = expand('~/.vim/chalice/cache/')
+
+"ユーザー名
+let g:gmail_user_name = 'horiesantoko@gmail.com'
+" jxabvzhsangqrhfl

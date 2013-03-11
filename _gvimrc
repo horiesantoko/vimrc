@@ -1,7 +1,8 @@
 " vim:set ts=8 sts=2 sw=2 tw=0: (この行に関しては:help modelineを参照)
 "---------------------------------------------------------------------------
 " カラー設定:
-colorscheme molokai
+colorscheme hybrid
+"colorscheme molokai
 "colorscheme mayansmoke
 
 "---------------------------------------------------------------------------
